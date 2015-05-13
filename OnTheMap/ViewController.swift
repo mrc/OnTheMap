@@ -7,12 +7,17 @@
 //
 
 import UIKit
+import Deferred
+import Result
 
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+
+        let d = Deferred<Result<String>>()
+        d.upon { s in println("got \(s)") }
+        d.fill(Result(success: "Hello"))
     }
 
     override func didReceiveMemoryWarning() {

@@ -13,6 +13,10 @@
 		26B845451B034B4F001AD5CF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 26B845441B034B4F001AD5CF /* Images.xcassets */; };
 		26B845481B034B4F001AD5CF /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26B845461B034B4F001AD5CF /* LaunchScreen.xib */; };
 		26B845541B034B4F001AD5CF /* OnTheMapTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B845531B034B4F001AD5CF /* OnTheMapTests.swift */; };
+		26B8456D1B035A2D001AD5CF /* Deferred.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26B8456C1B035A2D001AD5CF /* Deferred.framework */; };
+		26B845701B035BFF001AD5CF /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26B8456F1B035BFF001AD5CF /* Result.framework */; };
+		26B845721B035C03001AD5CF /* Box.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26B845711B035C03001AD5CF /* Box.framework */; };
+		26B845741B035C7B001AD5CF /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = 26B845731B035C7B001AD5CF /* Cartfile */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +40,10 @@
 		26B8454D1B034B4F001AD5CF /* OnTheMapTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OnTheMapTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		26B845521B034B4F001AD5CF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		26B845531B034B4F001AD5CF /* OnTheMapTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnTheMapTests.swift; sourceTree = "<group>"; };
+		26B8456C1B035A2D001AD5CF /* Deferred.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Deferred.framework; path = Carthage/Build/iOS/Deferred.framework; sourceTree = "<group>"; };
+		26B8456F1B035BFF001AD5CF /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/iOS/Result.framework; sourceTree = "<group>"; };
+		26B845711B035C03001AD5CF /* Box.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Box.framework; path = Carthage/Build/iOS/Box.framework; sourceTree = "<group>"; };
+		26B845731B035C7B001AD5CF /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +51,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26B8456D1B035A2D001AD5CF /* Deferred.framework in Frameworks */,
+				26B845701B035BFF001AD5CF /* Result.framework in Frameworks */,
+				26B845721B035C03001AD5CF /* Box.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,9 +70,13 @@
 		26B8452F1B034B4F001AD5CF = {
 			isa = PBXGroup;
 			children = (
+				26B845711B035C03001AD5CF /* Box.framework */,
+				26B8456F1B035BFF001AD5CF /* Result.framework */,
+				26B8456C1B035A2D001AD5CF /* Deferred.framework */,
 				26B8453A1B034B4F001AD5CF /* OnTheMap */,
 				26B845501B034B4F001AD5CF /* OnTheMapTests */,
 				26B845391B034B4F001AD5CF /* Products */,
+				26B845731B035C7B001AD5CF /* Cartfile */,
 			);
 			sourceTree = "<group>";
 		};
@@ -122,6 +137,7 @@
 				26B845341B034B4F001AD5CF /* Sources */,
 				26B845351B034B4F001AD5CF /* Frameworks */,
 				26B845361B034B4F001AD5CF /* Resources */,
+				26B8456E1B035ACD001AD5CF /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -194,6 +210,7 @@
 			files = (
 				26B845431B034B4F001AD5CF /* Main.storyboard in Resources */,
 				26B845481B034B4F001AD5CF /* LaunchScreen.xib in Resources */,
+				26B845741B035C7B001AD5CF /* Cartfile in Resources */,
 				26B845451B034B4F001AD5CF /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -206,6 +223,25 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		26B8456E1B035ACD001AD5CF /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Deferred.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Result.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Box.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		26B845341B034B4F001AD5CF /* Sources */ = {
@@ -340,6 +376,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = OnTheMap/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -350,6 +390,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = OnTheMap/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -409,6 +453,7 @@
 				26B845591B034B4F001AD5CF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		26B8455A1B034B4F001AD5CF /* Build configuration list for PBXNativeTarget "OnTheMapTests" */ = {
 			isa = XCConfigurationList;
@@ -417,6 +462,7 @@
 				26B8455C1B034B4F001AD5CF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
