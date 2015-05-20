@@ -13,10 +13,14 @@ typealias JSON = [String: AnyObject]
 
 extension NSData {
 
+    /**
+        Parse this NSData as JSON, and return it
+        or the error that occurred while parsing it.
+    */
     func toJSON() -> Result<JSON> {
 
         var parsingError: NSError? = nil
-        let parsedResult: AnyObject? = NSJSONSerialization.JSONObjectWithData(self, options: NSJSONReadingOptions.AllowFragments, error: &parsingError)
+        let parsedResult: AnyObject? = NSJSONSerialization.JSONObjectWithData(self, options: .AllowFragments, error: &parsingError)
 
         if let error = parsingError {
             return Result(failure: "parsing result: \(error.description)")
@@ -27,6 +31,10 @@ extension NSData {
         }
     }
 
+    /**
+        Parse NSData as JSON, and return it
+        or the error that occurred while parsing it.
+    */
     static func toJSON(d: NSData) -> Result<JSON> {
         return d.toJSON()
     }

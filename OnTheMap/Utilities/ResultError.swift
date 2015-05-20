@@ -9,6 +9,9 @@
 import Foundation
 import Result
 
+/**
+    Extend String to be an error type suitable for Result.
+*/
 extension String: ErrorType {
     public var description: String { return self }
 }

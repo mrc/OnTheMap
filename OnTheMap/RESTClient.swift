@@ -14,14 +14,21 @@ class RESTClient {
 
     lazy var urlSession = NSURLSession.sharedSession()
 
-    func postTo(method: String, withBody: JSON) -> Deferred<Result<NSData>> {
+    /**
+        POST some JSON data to a URL, and return the deferred
+        result, either the NSData retrieved from the URL,
+        or the error that occurred while POSTing.
+    */
+    func postTo(method: String, withBody: JSON, andHeaders: [String: String]) -> Deferred<Result<NSData>> {
 
         let d = Deferred<Result<NSData>>()
 
         let request = NSMutableURLRequest(URL: NSURL(string: method)!)
         request.HTTPMethod = "POST"
-        request.addValue("application/json", forHTTPHeaderField: "Accept")
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        for (field, value) in andHeaders {
+            request.addValue(value, forHTTPHeaderField: field)
+        }
 
         var jsonifyError: NSError? = nil
         request.HTTPBody = NSJSONSerialization.dataWithJSONObject(withBody, options: nil, error: &jsonifyError)
@@ -33,33 +40,38 @@ class RESTClient {
             if error != nil {
                 d.fill(Result(failure: error.description))
             } else {
-                let newData = data.subdataWithRange(NSMakeRange(5, data.length - 5)) /* subset response data! */
-                println(NSString(data: newData, encoding: NSUTF8StringEncoding))
-                d.fill(Result(success: newData))
+                d.fill(Result(success: data))
             }
         }
         task.resume()
         return d
     }
 
-    func getFrom(method: String) -> Deferred<Result<NSData>> {
+    /**
+        GET from a URL, and return the deferred result, either
+        the NSData retrieved from the URL, or the error that
+        occurred while GETting.
+    */
+    func getFrom(method: String, withHeaders: [String: String]) -> Deferred<Result<NSData>> {
 
         let d = Deferred<Result<NSData>>()
 
         let request = NSMutableURLRequest(URL: NSURL(string: method)!)
         request.HTTPMethod = "GET"
-        request.addValue("application/json", forHTTPHeaderField: "Accept")
+
+        for (field, value) in withHeaders {
+            request.addValue(value, forHTTPHeaderField: field)
+        }
 
         let task = urlSession.dataTaskWithRequest(request) { data, response, error in
             if error != nil {
                 d.fill(Result(failure: error.description))
             } else {
-                let newData = data.subdataWithRange(NSMakeRange(5, data.length - 5)) /* subset response data! */
-                println(NSString(data: newData, encoding: NSUTF8StringEncoding))
-                d.fill(Result(success: newData))
+                d.fill(Result(success: data))
             }
         }
         task.resume()
         return d
     }
+
 }
