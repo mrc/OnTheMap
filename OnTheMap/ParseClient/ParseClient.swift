@@ -16,7 +16,7 @@ class ParseClient: RESTClient {
         Return a list of student locations (deferred,
         may be an error result.)
     */
-    func getStudentLocation() -> Deferred<Result<[StudentLocation]>> {
+    func getStudentLocations() -> Deferred<Result<[StudentLocation]>> {
 
         let headers = [
             "Accept": "application/json",

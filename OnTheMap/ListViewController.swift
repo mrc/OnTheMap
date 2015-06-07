@@ -8,22 +8,15 @@
 
 import UIKit
 
-class ListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ListViewController: StudentLocationsViewController, UITableViewDelegate, UITableViewDataSource {
 
-    @IBOutlet weak var dropPinButton: UIBarButtonItem!
+    @IBOutlet weak var tableView: UITableView!
+    var studentLocations = [StudentLocation]()
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Add a refresh button (because we can't add buttons programatically)
-        let refreshButton = UIBarButtonItem(barButtonSystemItem: .Refresh, target: self, action: "refreshButtonClicked")
-        refreshButton.tintColor = .blackColor()
-
-        navigationItem.rightBarButtonItems = [refreshButton, dropPinButton]
-    }
-
-    func refreshButtonClicked() {
-        println("refreshing!")
+    override func loadedLocations(locations: [StudentLocation]) {
+        super.loadedLocations(locations)
+        studentLocations = locations
+        tableView.reloadData()
     }
 
     @IBAction func dropPinButtonClicked(sender: AnyObject) {
@@ -33,13 +26,27 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("StudentLocationViewCell") as! UITableViewCell
 
-        cell.textLabel!.text = "Hello"
+        let studentLocation = studentLocations[indexPath.item]
+
+        if let
+            firstName = studentLocation.firstName,
+            lastName = studentLocation.lastName {
+            cell.textLabel!.text = "\(firstName) \(lastName)"
+        } else {
+            cell.textLabel!.text = "anonymous"
+        }
+
+        if let mapString = studentLocation.mapString {
+            cell.detailTextLabel!.text = mapString
+        } else {
+            cell.detailTextLabel!.text = ""
+        }
 
         return cell
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return studentLocations.count
     }
     
 }

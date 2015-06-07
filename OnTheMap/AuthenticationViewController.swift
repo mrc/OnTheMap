@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import Deferred
-import Result
 
 class AuthenticationViewController: UIViewController {
 
@@ -18,7 +16,7 @@ class AuthenticationViewController: UIViewController {
         super.viewDidLoad()
 
         let parseClient = ParseClient()
-        let sloc = parseClient.getStudentLocation()
+        let sloc = parseClient.getStudentLocations()
         sloc.uponQueue(dispatch_get_main_queue()) {
             println("sloc: \($0)")
         }
