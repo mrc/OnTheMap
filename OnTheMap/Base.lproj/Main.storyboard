@@ -105,7 +105,7 @@
                                     <outlet property="delegate" destination="9UD-pB-xSG" id="1Nv-O8-J37"/>
                                 </connections>
                             </tableView>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UFf-mI-boJ" userLabel="Loading View">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UFf-mI-boJ" userLabel="Loading View">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading student locations" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aia-Be-P8C">
@@ -209,8 +209,7 @@
                     <connections>
                         <outlet property="activityIndicator" destination="HOs-bj-K8b" id="tk8-d7-DnM"/>
                         <outlet property="dropPinButton" destination="4kX-Dc-qoQ" id="yKD-7f-qv6"/>
-                        <outlet property="loadingView" destination="UFf-mI-boJ" id="4aV-G1-IUM"/>
-                        <outlet property="loadingViewMessage" destination="Aia-Be-P8C" id="MKC-r9-nkv"/>
+                        <outlet property="loadingViewTopConstraint" destination="dH6-u6-dvE" id="Tz3-9a-pDZ"/>
                         <outlet property="tableView" destination="ZG4-sM-mQO" id="5Eb-sP-4uN"/>
                     </connections>
                 </viewController>
@@ -236,7 +235,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="400" height="620"/>
                                 </variation>
                             </mapView>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cmj-70-DCh" userLabel="Loading View">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cmj-70-DCh" userLabel="Loading View">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading student locations" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WQa-dz-VCz">
@@ -328,8 +327,7 @@
                     <connections>
                         <outlet property="activityIndicator" destination="lKv-dU-9Dh" id="lem-Yv-444"/>
                         <outlet property="dropPinButton" destination="7bv-sL-oFK" id="ivs-Zl-RlR"/>
-                        <outlet property="loadingView" destination="cmj-70-DCh" id="nOd-Vy-Rkv"/>
-                        <outlet property="loadingViewMessage" destination="WQa-dz-VCz" id="QNr-TJ-Okl"/>
+                        <outlet property="loadingViewTopConstraint" destination="b1a-xb-b3t" id="PcV-xe-Oa1"/>
                         <outlet property="mapView" destination="4xP-De-20g" id="A4e-uJ-2ol"/>
                     </connections>
                 </viewController>
@@ -340,7 +338,7 @@
         <!--Information Posting-->
         <scene sceneID="zwp-8e-4gg">
             <objects>
-                <viewController title="Information Posting" id="eHR-8f-s6c" customClass="InformationPostingVIewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Information Posting" id="eHR-8f-s6c" customClass="InformationPostingViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y0e-bV-ChU"/>
                         <viewControllerLayoutGuide type="bottom" id="wAx-UY-ZXu"/>
@@ -413,6 +411,7 @@
                                 <state key="normal" title="Find on the Map"/>
                                 <connections>
                                     <action selector="findOnTheMapClicked:" destination="eHR-8f-s6c" eventType="touchUpInside" id="T7d-kb-i8k"/>
+                                    <segue destination="h17-CW-UP7" kind="unwind" unwindAction="findOnTheMap:" id="shf-zH-aUC"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -483,6 +482,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1dT-UY-UE3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="h17-CW-UP7" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="4504.5" y="388"/>
         </scene>

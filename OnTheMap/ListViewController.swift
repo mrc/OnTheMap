@@ -48,5 +48,9 @@ class ListViewController: StudentLocationsViewController, UITableViewDelegate, U
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return studentLocations.count
     }
+
+    @IBAction func findOnTheMap(segue:UIStoryboardSegue) {
+        println("ListViewController.findOnTheMap")
+    }
     
 }

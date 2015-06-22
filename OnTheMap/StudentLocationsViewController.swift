@@ -12,9 +12,8 @@ import Deferred
 class StudentLocationsViewController: UIViewController {
 
     @IBOutlet weak var dropPinButton: UIBarButtonItem!
-    @IBOutlet weak var loadingView: UIView!
-    @IBOutlet weak var loadingViewMessage: UILabel!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var loadingViewTopConstraint: NSLayoutConstraint!
 
     var isUpdating = false
 
@@ -31,8 +30,43 @@ class StudentLocationsViewController: UIViewController {
         navigationItem.rightBarButtonItems = [refreshButton, dropPinButton]
     }
 
+    override func viewWillAppear(animated: Bool) {
+        self.loadingViewTopConstraint.constant = -128
+    }
+
     override func viewDidAppear(animated: Bool) {
         populateStudentLocations()
+    }
+
+    func showLoadingMessage() {
+        activityIndicator.hidden = false
+        activityIndicator.startAnimating()
+
+        UIView.animateWithDuration(0.4, delay: 0.0,
+            usingSpringWithDamping: 0.7, initialSpringVelocity: 1.0,
+            options: .CurveEaseIn,
+            animations: {
+                self.loadingViewTopConstraint.constant = 0
+                self.view.layoutIfNeeded()
+            },
+            completion: { ok in
+                self.activityIndicator.stopAnimating()
+                self.activityIndicator.hidden = true
+                UIView.animateWithDuration(0.4, delay: 2.0,
+                    usingSpringWithDamping: 0.7, initialSpringVelocity: 0.0,
+                    options: .CurveEaseOut,
+                    animations: {
+                        self.loadingViewTopConstraint.constant = -128
+                        self.view.layoutIfNeeded()
+                    },
+                    completion: { ok in () })
+        })
+    }
+
+    func showErrorMessage(message: String) {
+        var errorAlert = UIAlertController(title: "Error", message: message, preferredStyle: UIAlertControllerStyle.Alert)
+        errorAlert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: nil))
+        presentViewController(errorAlert, animated: true, completion: nil)
     }
 
     func populateStudentLocations() {
@@ -42,58 +76,24 @@ class StudentLocationsViewController: UIViewController {
             return
         }
 
-        let hiddenY = CGFloat(-64) // hidden above the view
-        let targetY =  CGFloat(64) // just below the navigation bar
-
         // Prevent recursive reloading
         self.isUpdating = true
 
         // Show a loading message
-        let steelBlue4 = UIColor(red: CGFloat(74.0/255.0), green: CGFloat(112.0/255.0), blue: CGFloat(119.0/255.0), alpha: 1.0)
-        self.loadingView.backgroundColor = steelBlue4
-        self.loadingView.frame.origin.y = hiddenY
-        self.loadingViewMessage.text = "Loading student locations..."
-        self.loadingView.hidden = false
-        let doneAnimating = Deferred<Bool>()
-        UIView.animateWithDuration(0.4, delay: 0.0,
-            usingSpringWithDamping: 0.7, initialSpringVelocity: 1.0, options: UIViewAnimationOptions.CurveEaseIn,
-            animations: { self.loadingView.frame.origin.y = targetY },
-            completion: { finished in doneAnimating.fill(finished) })
-
-        self.activityIndicator.hidden = false
-        activityIndicator.startAnimating()
+        showLoadingMessage()
 
         let parseClient = ParseClient()
         parseClient
             .getStudentLocations()
             .uponQueue(dispatch_get_main_queue()) {
-                var disappearDuration = 1.0
-                var disappearDelay = 0.0
 
                 switch $0 {
                 case let .Success(locations):
                     self.loadedLocations(locations.value)
+                    self.isUpdating = false
 
                 case let .Failure(error):
-                    self.loadingView.backgroundColor = .redColor()
-                    disappearDelay = 5.0
-                    self.loadingViewMessage.text = error.description
-                    println("error: \(error)")
-                }
-
-                // Move the loading message off the screen,
-                // and allow reloading.
-                doneAnimating.uponQueue(dispatch_get_main_queue()) { finished in
-                    self.activityIndicator.stopAnimating()
-                    self.activityIndicator.hidden = true
-                    UIView.animateWithDuration(disappearDuration, delay: disappearDelay,
-                        usingSpringWithDamping: 1.0, initialSpringVelocity: 1.0,
-                        options: .CurveEaseOut,
-                        animations: { self.loadingView.frame.origin.y = hiddenY },
-                        completion: { ok in
-                            self.isUpdating = false
-                            self.loadingView.hidden = true
-                    })
+                    self.showErrorMessage(error.description)
                 }
         }
     }

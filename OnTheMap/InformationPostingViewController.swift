@@ -1,5 +1,5 @@
 //
-//  InformationPostingVIewController.swift
+//  InformationPostingViewController.swift
 //  OnTheMap
 //
 //  Created by Matt Curtis on 23/05/2015.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class InformationPostingVIewController: UIViewController, UITextFieldDelegate {
+class InformationPostingViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var locationTextField: UITextField!
 
