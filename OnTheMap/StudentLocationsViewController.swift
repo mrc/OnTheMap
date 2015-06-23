@@ -59,7 +59,7 @@ class StudentLocationsViewController: UIViewController {
                         self.loadingViewTopConstraint.constant = -128
                         self.view.layoutIfNeeded()
                     },
-                    completion: { ok in () })
+                    completion: nil)
         })
     }
 
@@ -95,6 +95,16 @@ class StudentLocationsViewController: UIViewController {
                 case let .Failure(error):
                     self.showErrorMessage(error.description)
                 }
+        }
+    }
+
+    @IBAction func findOnTheMap(segue:UIStoryboardSegue) {
+
+        if let
+            vc = segue.sourceViewController as? InformationPostingViewController,
+            location = vc.selectedUserLocation {
+                println("found location \(location)")
+
         }
     }
 

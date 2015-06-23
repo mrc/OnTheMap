@@ -19,10 +19,6 @@ class ListViewController: StudentLocationsViewController, UITableViewDelegate, U
         tableView.reloadData()
     }
 
-    @IBAction func dropPinButtonClicked(sender: AnyObject) {
-        println("poink!")
-    }
-
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("StudentLocationViewCell") as! UITableViewCell
 
@@ -49,8 +45,4 @@ class ListViewController: StudentLocationsViewController, UITableViewDelegate, U
         return studentLocations.count
     }
 
-    @IBAction func findOnTheMap(segue:UIStoryboardSegue) {
-        println("ListViewController.findOnTheMap")
-    }
-    
 }

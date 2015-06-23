@@ -8,15 +8,10 @@
 
 import UIKit
 import MapKit
-import Result
 
 class MapViewController: StudentLocationsViewController {
 
     @IBOutlet weak var mapView: MKMapView!
-
-    @IBAction func dropPinButtonClicked(sender: AnyObject) {
-        println("poink!")
-    }
 
     override func loadedLocations(locations: [StudentLocation]) {
         super.loadedLocations(locations)
@@ -37,41 +32,6 @@ class MapViewController: StudentLocationsViewController {
                     let pin = StudentLocationPin(coordinate: coords, title: title, subtitle: url)
                     mapView.addAnnotation(pin)
             }
-        }
-    }
-
-    @IBAction func findOnTheMap(segue:UIStoryboardSegue) {
-
-        if let vc = segue.sourceViewController as? InformationPostingViewController {
-
-            // helper to return the list of MKMapItems
-            // (if possible, otherwise return an error.)
-            func resultsToMapItems(results: MKLocalSearchResponse) -> Result<[MKMapItem]> {
-                if let items = results.mapItems as? [MKMapItem] {
-                    return Result(success: items)
-                }
-                else {
-                    return Result(failure: "No map items found.")
-                }
-            }
-
-            let foundLocations = LocationSearch()
-                .findLocationByName(vc.locationTextField.text, inRegion: self.mapView.region)
-                .map { $0.bind(resultsToMapItems) }
-
-            foundLocations
-                .uponQueue(dispatch_get_main_queue()) {
-                    switch $0 {
-                    case .Success(let mapItems):
-                        println("found: \(mapItems)")
-                        break
-
-                    case .Failure(let error):
-                        println("error: \(error))")
-                        break
-                    }
-            }
-
         }
     }
 
