@@ -98,14 +98,15 @@ class StudentLocationsViewController: UIViewController {
         }
     }
 
-    @IBAction func findOnTheMap(segue:UIStoryboardSegue) {
 
+    @IBAction func submitLocation(segue: UIStoryboardSegue) {
         if let
             vc = segue.sourceViewController as? InformationPostingViewController,
-            location = vc.selectedUserLocation {
-                println("found location \(location)")
-
+            location = vc.selectedUserLocation,
+            url = vc.urlTextField.text {
+                println("found location \(location), url \(url)")
         }
     }
+
 
 }

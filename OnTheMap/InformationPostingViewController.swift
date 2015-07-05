@@ -11,26 +11,33 @@ import MapKit
 import Result
 import Deferred
 
-class InformationPostingViewController: UIViewController, UITextFieldDelegate {
+class InformationPostingViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegate {
 
     @IBOutlet weak var locationTextField: UITextField!
-    @IBOutlet weak var enterLocationTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var urlTextField: UITextField!
+    @IBOutlet weak var interactionViewTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var whereAreYouStudyingView: UIView!
-    @IBOutlet weak var locationInputView: UIView!
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var findOnTheMapButton: UIButton!
+    @IBOutlet weak var submitButton: UIButton!
+    @IBOutlet weak var pageControl: UIPageControl!
     var selectedUserLocation: CLLocationCoordinate2D?
+
 
     @IBAction func findOnTheMapClicked(sender: AnyObject) {
         UIView.animateWithDuration(0.2, delay: 0.0, options: .CurveEaseOut,
             animations: {
                 self.whereAreYouStudyingView.alpha = 0
-                self.locationInputView.alpha = 0.75
-                self.enterLocationTopConstraint.constant = 0
+                self.interactionViewTopConstraint.constant = 0
                 self.view.layoutIfNeeded()
             },
             completion: { ok in
                 self.findLocation(self.locationTextField.text)
         })
+    }
+
+    @IBAction func cancelClicked(sender: AnyObject) {
+        dismissViewControllerAnimated(true, completion: nil)
     }
 
     func showErrorMessage(message: String) {
@@ -83,6 +90,12 @@ class InformationPostingViewController: UIViewController, UITextFieldDelegate {
                     break
                 }
         }
+    }
+
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        let pageWidth = scrollView.frame.size.width
+        let page = Int(floor((scrollView.contentOffset.x * 2.0 + pageWidth) / (pageWidth * 2.0)))
+        pageControl.currentPage = page
     }
 
     func textFieldShouldReturn(textField: UITextField) -> Bool {
