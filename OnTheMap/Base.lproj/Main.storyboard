@@ -4,7 +4,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--Authentication View Controller-->
@@ -450,254 +449,74 @@
                                     </mask>
                                 </variation>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ipf-Fl-nX1" userLabel="Interaction View">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cUv-MD-Hgu" userLabel="Location Input">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
-                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eUM-If-kk1">
-                                        <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                        <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w9i-Eh-QBc" userLabel="Content View">
-                                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                                <subviews>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cUv-MD-Hgu" userLabel="Location Input">
-                                                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                                        <subviews>
-                                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="Enter your location" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YNf-5i-ZUA">
-                                                                <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
-                                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="24"/>
-                                                                <textInputTraits key="textInputTraits"/>
-                                                                <connections>
-                                                                    <outlet property="delegate" destination="eHR-8f-s6c" id="pH5-Sa-fBw"/>
-                                                                </connections>
-                                                            </textField>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="epQ-yE-rP0">
-                                                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="32"/>
-                                                                <state key="normal" title="Find on the Map">
-                                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                                </state>
-                                                                <connections>
-                                                                    <action selector="findOnTheMapClicked:" destination="eHR-8f-s6c" eventType="touchUpInside" id="T7d-kb-i8k"/>
-                                                                </connections>
-                                                            </button>
-                                                        </subviews>
-                                                        <color key="backgroundColor" red="0.2901960784" green="0.43921568630000002" blue="0.5450980392" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <gestureRecognizers/>
-                                                        <constraints>
-                                                            <constraint firstItem="epQ-yE-rP0" firstAttribute="centerX" secondItem="cUv-MD-Hgu" secondAttribute="centerX" id="9s3-pq-Ntj" userLabel="Find on the Map X"/>
-                                                            <constraint firstItem="YNf-5i-ZUA" firstAttribute="centerY" secondItem="cUv-MD-Hgu" secondAttribute="centerY" constant="-16" id="M9Z-l1-GUL" userLabel="Enter your location Y"/>
-                                                            <constraint firstItem="YNf-5i-ZUA" firstAttribute="width" secondItem="cUv-MD-Hgu" secondAttribute="width" id="VC5-uC-EOa" userLabel="Enter your location Width"/>
-                                                            <constraint firstItem="YNf-5i-ZUA" firstAttribute="centerX" secondItem="cUv-MD-Hgu" secondAttribute="centerX" id="gHq-9H-Fld" userLabel="Enter your location X"/>
-                                                            <constraint firstItem="epQ-yE-rP0" firstAttribute="centerY" secondItem="cUv-MD-Hgu" secondAttribute="centerY" constant="32" id="gw8-s0-obi" userLabel="Find on the Map Y"/>
-                                                        </constraints>
-                                                        <variation key="default">
-                                                            <mask key="subviews">
-                                                                <exclude reference="YNf-5i-ZUA"/>
-                                                                <exclude reference="epQ-yE-rP0"/>
-                                                            </mask>
-                                                            <mask key="constraints">
-                                                                <exclude reference="M9Z-l1-GUL"/>
-                                                                <exclude reference="VC5-uC-EOa"/>
-                                                                <exclude reference="gHq-9H-Fld"/>
-                                                                <exclude reference="9s3-pq-Ntj"/>
-                                                                <exclude reference="gw8-s0-obi"/>
-                                                            </mask>
-                                                        </variation>
-                                                        <variation key="widthClass=compact">
-                                                            <mask key="subviews">
-                                                                <include reference="YNf-5i-ZUA"/>
-                                                                <include reference="epQ-yE-rP0"/>
-                                                            </mask>
-                                                            <mask key="constraints">
-                                                                <include reference="M9Z-l1-GUL"/>
-                                                                <include reference="VC5-uC-EOa"/>
-                                                                <include reference="gHq-9H-Fld"/>
-                                                                <include reference="9s3-pq-Ntj"/>
-                                                                <include reference="gw8-s0-obi"/>
-                                                            </mask>
-                                                        </variation>
-                                                    </view>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="olE-Pr-gtd" userLabel="Description Input">
-                                                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                                        <subviews>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l4y-8y-KJb">
-                                                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="32"/>
-                                                                <state key="normal" title="Submit">
-                                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                                </state>
-                                                                <connections>
-                                                                    <action selector="findOnTheMapClicked:" destination="eHR-8f-s6c" eventType="touchUpInside" id="Oak-ei-QR8"/>
-                                                                    <segue destination="Uho-zL-4L1" kind="unwind" unwindAction="submitLocation:" id="Kpd-yC-3Bp"/>
-                                                                </connections>
-                                                            </button>
-                                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="Enter your URL" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Jxx-M2-tvq">
-                                                                <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
-                                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="24"/>
-                                                                <textInputTraits key="textInputTraits" keyboardType="URL"/>
-                                                            </textField>
-                                                        </subviews>
-                                                        <color key="backgroundColor" red="0.2901960784" green="0.43921568630000002" blue="0.5450980392" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <constraints>
-                                                            <constraint firstItem="l4y-8y-KJb" firstAttribute="centerX" secondItem="olE-Pr-gtd" secondAttribute="centerX" id="2fX-g6-iFW" userLabel="Submit X"/>
-                                                            <constraint firstItem="Jxx-M2-tvq" firstAttribute="width" secondItem="olE-Pr-gtd" secondAttribute="width" id="F9Z-73-2qd" userLabel="Enter URL Width"/>
-                                                            <constraint firstItem="Jxx-M2-tvq" firstAttribute="centerY" secondItem="olE-Pr-gtd" secondAttribute="centerY" constant="-16" id="Gfz-Qt-bAN" userLabel="Enter URL Y"/>
-                                                            <constraint firstItem="l4y-8y-KJb" firstAttribute="centerY" secondItem="olE-Pr-gtd" secondAttribute="centerY" constant="32" id="U1C-vq-bcK" userLabel="Submit Y"/>
-                                                            <constraint firstItem="Jxx-M2-tvq" firstAttribute="centerX" secondItem="olE-Pr-gtd" secondAttribute="centerX" id="os4-it-zgP" userLabel="Enter URL X"/>
-                                                        </constraints>
-                                                        <variation key="default">
-                                                            <mask key="subviews">
-                                                                <exclude reference="l4y-8y-KJb"/>
-                                                                <exclude reference="Jxx-M2-tvq"/>
-                                                            </mask>
-                                                            <mask key="constraints">
-                                                                <exclude reference="F9Z-73-2qd"/>
-                                                                <exclude reference="Gfz-Qt-bAN"/>
-                                                                <exclude reference="os4-it-zgP"/>
-                                                                <exclude reference="2fX-g6-iFW"/>
-                                                                <exclude reference="U1C-vq-bcK"/>
-                                                            </mask>
-                                                        </variation>
-                                                        <variation key="widthClass=compact">
-                                                            <mask key="subviews">
-                                                                <include reference="l4y-8y-KJb"/>
-                                                                <include reference="Jxx-M2-tvq"/>
-                                                            </mask>
-                                                            <mask key="constraints">
-                                                                <include reference="F9Z-73-2qd"/>
-                                                                <include reference="Gfz-Qt-bAN"/>
-                                                                <include reference="os4-it-zgP"/>
-                                                                <include reference="2fX-g6-iFW"/>
-                                                                <include reference="U1C-vq-bcK"/>
-                                                            </mask>
-                                                        </variation>
-                                                    </view>
-                                                </subviews>
-                                                <constraints>
-                                                    <constraint firstItem="cUv-MD-Hgu" firstAttribute="leading" secondItem="w9i-Eh-QBc" secondAttribute="leading" id="4tf-Id-QeR" userLabel="Location Input Page Leading"/>
-                                                    <constraint firstItem="olE-Pr-gtd" firstAttribute="top" secondItem="w9i-Eh-QBc" secondAttribute="top" id="87Q-vg-zjy" userLabel="Description Input Page Top"/>
-                                                    <constraint firstItem="olE-Pr-gtd" firstAttribute="leading" secondItem="cUv-MD-Hgu" secondAttribute="trailing" id="DEU-bx-Kjq" userLabel="Page 1 - Page 2"/>
-                                                    <constraint firstItem="cUv-MD-Hgu" firstAttribute="top" secondItem="w9i-Eh-QBc" secondAttribute="top" id="yUy-AW-dA1" userLabel="Location Input Page Top"/>
-                                                </constraints>
-                                                <variation key="default">
-                                                    <mask key="subviews">
-                                                        <exclude reference="cUv-MD-Hgu"/>
-                                                        <exclude reference="olE-Pr-gtd"/>
-                                                    </mask>
-                                                    <mask key="constraints">
-                                                        <exclude reference="4tf-Id-QeR"/>
-                                                        <exclude reference="yUy-AW-dA1"/>
-                                                        <exclude reference="87Q-vg-zjy"/>
-                                                        <exclude reference="DEU-bx-Kjq"/>
-                                                    </mask>
-                                                </variation>
-                                                <variation key="widthClass=compact">
-                                                    <mask key="subviews">
-                                                        <include reference="cUv-MD-Hgu"/>
-                                                        <include reference="olE-Pr-gtd"/>
-                                                    </mask>
-                                                    <mask key="constraints">
-                                                        <include reference="4tf-Id-QeR"/>
-                                                        <include reference="yUy-AW-dA1"/>
-                                                        <include reference="87Q-vg-zjy"/>
-                                                        <include reference="DEU-bx-Kjq"/>
-                                                    </mask>
-                                                </variation>
-                                            </view>
-                                        </subviews>
-                                        <constraints>
-                                            <constraint firstItem="w9i-Eh-QBc" firstAttribute="leading" secondItem="eUM-If-kk1" secondAttribute="leading" id="GeG-N2-68J" userLabel="Content View Leading"/>
-                                            <constraint firstItem="w9i-Eh-QBc" firstAttribute="bottom" secondItem="eUM-If-kk1" secondAttribute="bottom" id="PGd-NS-Xp9" userLabel="Content View Bottom"/>
-                                            <constraint firstItem="w9i-Eh-QBc" firstAttribute="top" secondItem="eUM-If-kk1" secondAttribute="top" id="S9T-oh-PwS" userLabel="Content View Top"/>
-                                            <constraint firstItem="w9i-Eh-QBc" firstAttribute="trailing" secondItem="eUM-If-kk1" secondAttribute="trailing" id="jXV-ZO-WGh" userLabel="Content View Trailing"/>
-                                        </constraints>
-                                        <variation key="default">
-                                            <mask key="subviews">
-                                                <exclude reference="w9i-Eh-QBc"/>
-                                            </mask>
-                                            <mask key="constraints">
-                                                <exclude reference="GeG-N2-68J"/>
-                                                <exclude reference="PGd-NS-Xp9"/>
-                                                <exclude reference="S9T-oh-PwS"/>
-                                                <exclude reference="jXV-ZO-WGh"/>
-                                            </mask>
-                                        </variation>
-                                        <variation key="widthClass=compact">
-                                            <mask key="subviews">
-                                                <include reference="w9i-Eh-QBc"/>
-                                            </mask>
-                                            <mask key="constraints">
-                                                <include reference="GeG-N2-68J"/>
-                                                <include reference="PGd-NS-Xp9"/>
-                                                <include reference="S9T-oh-PwS"/>
-                                                <include reference="jXV-ZO-WGh"/>
-                                            </mask>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="Enter your location" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YNf-5i-ZUA">
+                                        <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="24"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <variation key="widthClass=compact" fixedFrame="YES">
+                                            <rect key="frame" x="0.0" y="80" width="400" height="28"/>
                                         </variation>
                                         <connections>
-                                            <outlet property="delegate" destination="eHR-8f-s6c" id="RoV-d7-JUt"/>
+                                            <outlet property="delegate" destination="eHR-8f-s6c" id="pH5-Sa-fBw"/>
                                         </connections>
-                                    </scrollView>
-                                    <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="2" translatesAutoresizingMaskIntoConstraints="NO" id="doi-P1-JvD">
-                                        <rect key="frame" x="-19" y="-18" width="39" height="37"/>
-                                    </pageControl>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="epQ-yE-rP0">
+                                        <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="32"/>
+                                        <state key="normal" title="Find on the Map">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <variation key="widthClass=compact" fixedFrame="YES">
+                                            <rect key="frame" x="91" y="117" width="218" height="50"/>
+                                        </variation>
+                                        <connections>
+                                            <action selector="findOnTheMapClicked:" destination="eHR-8f-s6c" eventType="touchUpInside" id="T7d-kb-i8k"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tux-YH-xAM">
+                                        <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="32"/>
+                                        <state key="normal" title="Submit">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="submitLocationClicked:" destination="eHR-8f-s6c" eventType="touchUpInside" id="24E-zO-fWL"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
+                                <color key="backgroundColor" red="0.2901960784" green="0.43921568630000002" blue="0.5450980392" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <gestureRecognizers/>
                                 <constraints>
-                                    <constraint firstItem="w9i-Eh-QBc" firstAttribute="width" secondItem="ipf-Fl-nX1" secondAttribute="width" multiplier="2" id="059-Y2-kDF" userLabel="Content View Width"/>
-                                    <constraint firstItem="doi-P1-JvD" firstAttribute="bottom" secondItem="ipf-Fl-nX1" secondAttribute="bottom" constant="-8" id="1PD-1z-gGS" userLabel="Page Control Y"/>
-                                    <constraint firstItem="eUM-If-kk1" firstAttribute="bottom" secondItem="ipf-Fl-nX1" secondAttribute="bottom" id="4z4-tJ-tHH" userLabel="Scroll View Bottom"/>
-                                    <constraint firstAttribute="height" constant="220" id="H9M-MP-OyA" userLabel="Interaction View Height"/>
-                                    <constraint firstItem="doi-P1-JvD" firstAttribute="centerX" secondItem="ipf-Fl-nX1" secondAttribute="centerX" constant="0.5" id="RVS-It-Geq" userLabel="Page Control X"/>
-                                    <constraint firstItem="w9i-Eh-QBc" firstAttribute="height" secondItem="ipf-Fl-nX1" secondAttribute="height" id="Vxy-p1-rbb" userLabel="Content View Height"/>
-                                    <constraint firstItem="olE-Pr-gtd" firstAttribute="width" secondItem="ipf-Fl-nX1" secondAttribute="width" id="aC2-lq-KXy" userLabel="Description Input Width"/>
-                                    <constraint firstItem="eUM-If-kk1" firstAttribute="leading" secondItem="ipf-Fl-nX1" secondAttribute="leading" id="f9X-QS-VnZ" userLabel="Scroll View Leading"/>
-                                    <constraint firstItem="cUv-MD-Hgu" firstAttribute="height" secondItem="ipf-Fl-nX1" secondAttribute="height" id="fg8-XR-Anr" userLabel="Location Input Height"/>
-                                    <constraint firstItem="eUM-If-kk1" firstAttribute="trailing" secondItem="ipf-Fl-nX1" secondAttribute="trailing" id="gR6-lJ-ak1" userLabel="Scroll View Trailing"/>
-                                    <constraint firstItem="cUv-MD-Hgu" firstAttribute="width" secondItem="ipf-Fl-nX1" secondAttribute="width" id="jfd-dg-Rtn" userLabel="Location Input  Width"/>
-                                    <constraint firstItem="eUM-If-kk1" firstAttribute="top" secondItem="ipf-Fl-nX1" secondAttribute="top" id="ka1-ci-ztu" userLabel="Scroll View Top"/>
-                                    <constraint firstItem="olE-Pr-gtd" firstAttribute="height" secondItem="ipf-Fl-nX1" secondAttribute="height" id="xF9-6G-BTS" userLabel="Description Input Height"/>
+                                    <constraint firstAttribute="centerX" secondItem="tux-YH-xAM" secondAttribute="centerX" id="5YI-ZO-lWp"/>
+                                    <constraint firstAttribute="bottom" secondItem="tux-YH-xAM" secondAttribute="bottom" constant="8" id="EAk-XJ-Ggv"/>
+                                    <constraint firstAttribute="height" constant="220" id="Yqv-hn-DZL" userLabel="Location Input Height"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="subviews">
-                                        <exclude reference="eUM-If-kk1"/>
-                                        <exclude reference="doi-P1-JvD"/>
+                                        <exclude reference="YNf-5i-ZUA"/>
+                                        <exclude reference="epQ-yE-rP0"/>
+                                        <exclude reference="tux-YH-xAM"/>
                                     </mask>
                                     <mask key="constraints">
-                                        <exclude reference="H9M-MP-OyA"/>
-                                        <exclude reference="1PD-1z-gGS"/>
-                                        <exclude reference="RVS-It-Geq"/>
-                                        <exclude reference="4z4-tJ-tHH"/>
-                                        <exclude reference="f9X-QS-VnZ"/>
-                                        <exclude reference="gR6-lJ-ak1"/>
-                                        <exclude reference="ka1-ci-ztu"/>
-                                        <exclude reference="fg8-XR-Anr"/>
-                                        <exclude reference="jfd-dg-Rtn"/>
-                                        <exclude reference="aC2-lq-KXy"/>
-                                        <exclude reference="xF9-6G-BTS"/>
-                                        <exclude reference="059-Y2-kDF"/>
-                                        <exclude reference="Vxy-p1-rbb"/>
+                                        <exclude reference="Yqv-hn-DZL"/>
+                                        <exclude reference="5YI-ZO-lWp"/>
+                                        <exclude reference="EAk-XJ-Ggv"/>
                                     </mask>
                                 </variation>
                                 <variation key="widthClass=compact">
                                     <mask key="subviews">
-                                        <include reference="eUM-If-kk1"/>
-                                        <include reference="doi-P1-JvD"/>
+                                        <include reference="YNf-5i-ZUA"/>
+                                        <include reference="epQ-yE-rP0"/>
+                                        <include reference="tux-YH-xAM"/>
                                     </mask>
                                     <mask key="constraints">
-                                        <include reference="H9M-MP-OyA"/>
-                                        <include reference="1PD-1z-gGS"/>
-                                        <include reference="RVS-It-Geq"/>
-                                        <include reference="4z4-tJ-tHH"/>
-                                        <include reference="f9X-QS-VnZ"/>
-                                        <include reference="gR6-lJ-ak1"/>
-                                        <include reference="ka1-ci-ztu"/>
-                                        <include reference="fg8-XR-Anr"/>
-                                        <include reference="jfd-dg-Rtn"/>
-                                        <include reference="aC2-lq-KXy"/>
-                                        <include reference="xF9-6G-BTS"/>
-                                        <include reference="059-Y2-kDF"/>
-                                        <include reference="Vxy-p1-rbb"/>
+                                        <include reference="Yqv-hn-DZL"/>
+                                        <include reference="5YI-ZO-lWp"/>
+                                        <include reference="EAk-XJ-Ggv"/>
                                     </mask>
                                 </variation>
                             </view>
@@ -723,22 +542,22 @@
                                     </mask>
                                 </variation>
                                 <connections>
-                                    <action selector="cancelClicked:" destination="eHR-8f-s6c" eventType="touchUpInside" id="Icq-23-75d"/>
+                                    <segue destination="xgC-o8-cb7" kind="unwind" identifier="cancelLocationSubmitSegue" unwindAction="cancelLocationSubmit:" id="BJi-6H-zJV"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="S6b-cL-NWK" firstAttribute="trailing" secondItem="zGY-FV-ZKu" secondAttribute="trailingMargin" constant="16" id="0D8-G0-yzb" userLabel="Map Container Trailing"/>
-                            <constraint firstItem="ipf-Fl-nX1" firstAttribute="trailing" secondItem="zGY-FV-ZKu" secondAttribute="trailingMargin" constant="16" id="8Sl-R6-7c9" userLabel="Interaction View Trailing"/>
-                            <constraint firstItem="ipf-Fl-nX1" firstAttribute="leading" secondItem="zGY-FV-ZKu" secondAttribute="leadingMargin" constant="-16" id="Abx-ey-f1b" userLabel="Interaction View Leading"/>
                             <constraint firstItem="nYo-PR-F9c" firstAttribute="leading" secondItem="zGY-FV-ZKu" secondAttribute="leadingMargin" constant="-16" id="PiT-GM-pvf" userLabel="Where Banner Leading"/>
                             <constraint firstItem="S6b-cL-NWK" firstAttribute="top" secondItem="y0e-bV-ChU" secondAttribute="bottom" id="UZ7-9z-osa" userLabel="Map Container Top"/>
+                            <constraint firstItem="cUv-MD-Hgu" firstAttribute="top" secondItem="y0e-bV-ChU" secondAttribute="bottom" constant="170" id="Xlh-kG-h6F" userLabel="Location Input Top"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="cUv-MD-Hgu" secondAttribute="trailing" constant="-16" id="Xmw-jv-kOV" userLabel="Location Input Trailing"/>
                             <constraint firstItem="nYo-PR-F9c" firstAttribute="top" secondItem="y0e-bV-ChU" secondAttribute="bottom" id="Yzr-jo-9NU" userLabel="Where Banner Top"/>
                             <constraint firstItem="S6b-cL-NWK" firstAttribute="leading" secondItem="zGY-FV-ZKu" secondAttribute="leadingMargin" constant="-16" id="dSI-zX-gFd" userLabel="Map Container Leading"/>
                             <constraint firstItem="qRA-PQ-eDp" firstAttribute="top" secondItem="y0e-bV-ChU" secondAttribute="bottom" id="qo6-zc-4BH" userLabel="Cancel Top"/>
-                            <constraint firstItem="ipf-Fl-nX1" firstAttribute="top" secondItem="y0e-bV-ChU" secondAttribute="bottom" constant="170" id="r2F-a2-J69" userLabel="Interaction View Top"/>
                             <constraint firstItem="qRA-PQ-eDp" firstAttribute="trailing" secondItem="zGY-FV-ZKu" secondAttribute="trailingMargin" id="v2O-CH-IbZ" userLabel="Cancel Trailing"/>
+                            <constraint firstItem="cUv-MD-Hgu" firstAttribute="leading" secondItem="zGY-FV-ZKu" secondAttribute="leadingMargin" constant="-16" id="vn3-wK-ENZ" userLabel="Location Input Leading"/>
                             <constraint firstItem="S6b-cL-NWK" firstAttribute="bottom" secondItem="wAx-UY-ZXu" secondAttribute="top" id="wB0-UB-NaI" userLabel="Map Container Bottom"/>
                             <constraint firstItem="nYo-PR-F9c" firstAttribute="trailing" secondItem="zGY-FV-ZKu" secondAttribute="trailingMargin" constant="16" id="zFr-Xh-0JP" userLabel="Where Banner Trailing"/>
                         </constraints>
@@ -746,7 +565,7 @@
                             <mask key="subviews">
                                 <exclude reference="S6b-cL-NWK"/>
                                 <exclude reference="nYo-PR-F9c"/>
-                                <exclude reference="ipf-Fl-nX1"/>
+                                <exclude reference="cUv-MD-Hgu"/>
                                 <exclude reference="qRA-PQ-eDp"/>
                             </mask>
                             <mask key="constraints">
@@ -756,9 +575,9 @@
                                 <exclude reference="UZ7-9z-osa"/>
                                 <exclude reference="dSI-zX-gFd"/>
                                 <exclude reference="wB0-UB-NaI"/>
-                                <exclude reference="8Sl-R6-7c9"/>
-                                <exclude reference="Abx-ey-f1b"/>
-                                <exclude reference="r2F-a2-J69"/>
+                                <exclude reference="Xlh-kG-h6F"/>
+                                <exclude reference="Xmw-jv-kOV"/>
+                                <exclude reference="vn3-wK-ENZ"/>
                                 <exclude reference="PiT-GM-pvf"/>
                                 <exclude reference="Yzr-jo-9NU"/>
                                 <exclude reference="zFr-Xh-0JP"/>
@@ -768,7 +587,7 @@
                             <mask key="subviews">
                                 <include reference="S6b-cL-NWK"/>
                                 <include reference="nYo-PR-F9c"/>
-                                <include reference="ipf-Fl-nX1"/>
+                                <include reference="cUv-MD-Hgu"/>
                                 <include reference="qRA-PQ-eDp"/>
                             </mask>
                             <mask key="constraints">
@@ -778,9 +597,9 @@
                                 <include reference="UZ7-9z-osa"/>
                                 <include reference="dSI-zX-gFd"/>
                                 <include reference="wB0-UB-NaI"/>
-                                <include reference="8Sl-R6-7c9"/>
-                                <include reference="Abx-ey-f1b"/>
-                                <include reference="r2F-a2-J69"/>
+                                <include reference="Xlh-kG-h6F"/>
+                                <include reference="Xmw-jv-kOV"/>
+                                <include reference="vn3-wK-ENZ"/>
                                 <include reference="PiT-GM-pvf"/>
                                 <include reference="Yzr-jo-9NU"/>
                                 <include reference="zFr-Xh-0JP"/>
@@ -789,17 +608,16 @@
                     </view>
                     <connections>
                         <outlet property="findOnTheMapButton" destination="epQ-yE-rP0" id="ds9-VC-aXS"/>
-                        <outlet property="interactionViewTopConstraint" destination="r2F-a2-J69" id="160-ZK-aHe"/>
+                        <outlet property="locationInputTopConstraint" destination="Xlh-kG-h6F" id="5KC-A4-r6c"/>
                         <outlet property="locationTextField" destination="YNf-5i-ZUA" id="wvg-jR-fWh"/>
                         <outlet property="mapView" destination="VMn-St-749" id="ah9-8E-VIe"/>
-                        <outlet property="pageControl" destination="doi-P1-JvD" id="vSc-5g-7bS"/>
-                        <outlet property="submitButton" destination="l4y-8y-KJb" id="zwj-yY-ko2"/>
-                        <outlet property="urlTextField" destination="Jxx-M2-tvq" id="cg0-a0-jv4"/>
+                        <outlet property="submitButton" destination="tux-YH-xAM" id="VQN-i0-0Np"/>
                         <outlet property="whereAreYouStudyingView" destination="nYo-PR-F9c" id="cgj-1l-PMY"/>
+                        <segue destination="xgC-o8-cb7" kind="unwind" identifier="submitLocationSegue" unwindAction="submitLocation:" id="ZOJ-zG-f0B"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1dT-UY-UE3" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="Uho-zL-4L1" userLabel="Exit" sceneMemberID="exit"/>
+                <exit id="xgC-o8-cb7" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="4504.5" y="388"/>
         </scene>

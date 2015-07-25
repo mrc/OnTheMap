@@ -103,9 +103,13 @@ class StudentLocationsViewController: UIViewController {
         if let
             vc = segue.sourceViewController as? InformationPostingViewController,
             location = vc.selectedUserLocation,
-            url = vc.urlTextField.text {
+            url = vc.url {
                 println("found location \(location), url \(url)")
         }
+    }
+
+    @IBAction func cancelLocationSubmit(segue: UIStoryboardSegue) {
+
     }
 
 

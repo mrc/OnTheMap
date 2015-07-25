@@ -11,24 +11,23 @@ import MapKit
 import Result
 import Deferred
 
-class InformationPostingViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegate {
+class InformationPostingViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var locationTextField: UITextField!
-    @IBOutlet weak var urlTextField: UITextField!
-    @IBOutlet weak var interactionViewTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var locationInputTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var whereAreYouStudyingView: UIView!
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var findOnTheMapButton: UIButton!
     @IBOutlet weak var submitButton: UIButton!
-    @IBOutlet weak var pageControl: UIPageControl!
     var selectedUserLocation: CLLocationCoordinate2D?
-
+    var url: String?
 
     @IBAction func findOnTheMapClicked(sender: AnyObject) {
         UIView.animateWithDuration(0.2, delay: 0.0, options: .CurveEaseOut,
             animations: {
                 self.whereAreYouStudyingView.alpha = 0
-                self.interactionViewTopConstraint.constant = 0
+                self.locationInputTopConstraint.constant = 0
+                self.submitButton.alpha = 1
                 self.view.layoutIfNeeded()
             },
             completion: { ok in
@@ -36,8 +35,36 @@ class InformationPostingViewController: UIViewController, UITextFieldDelegate, U
         })
     }
 
-    @IBAction func cancelClicked(sender: AnyObject) {
-        dismissViewControllerAnimated(true, completion: nil)
+    @IBAction func submitLocationClicked(sender: AnyObject) {
+
+        var alert = UIAlertController(title: "Almost there...", message: "Enter your link", preferredStyle: .Alert)
+
+        let urlAction = UIAlertAction(title: "Submit", style: .Default) { _ in
+
+            // save the text field for the presenting view controller
+            let urlField = alert.textFields![0] as! UITextField
+            self.url = urlField.text
+
+            // dismiss the information posting view controller
+            self.performSegueWithIdentifier("submitLocationSegue", sender: self)
+        }
+
+        urlAction.enabled = false // will be enabled when the user types something into the field
+
+        alert.addTextFieldWithConfigurationHandler { textField in
+            textField.placeholder = "Enter your URL"
+            NSNotificationCenter.defaultCenter().addObserverForName(UITextFieldTextDidChangeNotification, object: textField, queue: NSOperationQueue.mainQueue()) { notification in
+                urlAction.enabled = true
+            }
+        }
+
+        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+
+        alert.addAction(urlAction)
+        alert.addAction(cancelAction)
+
+        self.presentViewController(alert, animated: true, completion: nil)
+
     }
 
     func showErrorMessage(message: String) {
@@ -90,12 +117,6 @@ class InformationPostingViewController: UIViewController, UITextFieldDelegate, U
                     break
                 }
         }
-    }
-
-    func scrollViewDidScroll(scrollView: UIScrollView) {
-        let pageWidth = scrollView.frame.size.width
-        let page = Int(floor((scrollView.contentOffset.x * 2.0 + pageWidth) / (pageWidth * 2.0)))
-        pageControl.currentPage = page
     }
 
     func textFieldShouldReturn(textField: UITextField) -> Bool {
