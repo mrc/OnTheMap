@@ -82,7 +82,7 @@
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qad-ZH-Nj1">
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                     <variation key="widthClass=compact">
                                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -91,7 +91,7 @@
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="jok-X1-oV3">
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                     <variation key="widthClass=compact">
                                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
@@ -389,19 +389,19 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="studying" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RM6-xg-VqX">
                                         <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="32"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="today?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4ij-pK-B14">
                                         <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="32"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Where are you" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mFI-5S-5FN">
                                         <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="32"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -579,8 +579,6 @@
                                                     <constraint firstItem="cUv-MD-Hgu" firstAttribute="leading" secondItem="w9i-Eh-QBc" secondAttribute="leading" id="4tf-Id-QeR" userLabel="Location Input Page Leading"/>
                                                     <constraint firstItem="olE-Pr-gtd" firstAttribute="top" secondItem="w9i-Eh-QBc" secondAttribute="top" id="87Q-vg-zjy" userLabel="Description Input Page Top"/>
                                                     <constraint firstItem="olE-Pr-gtd" firstAttribute="leading" secondItem="cUv-MD-Hgu" secondAttribute="trailing" id="DEU-bx-Kjq" userLabel="Page 1 - Page 2"/>
-                                                    <constraint firstAttribute="height" constant="220" id="gCT-7J-u0r"/>
-                                                    <constraint firstAttribute="width" constant="800" id="sQC-6W-KZA"/>
                                                     <constraint firstItem="cUv-MD-Hgu" firstAttribute="top" secondItem="w9i-Eh-QBc" secondAttribute="top" id="yUy-AW-dA1" userLabel="Location Input Page Top"/>
                                                 </constraints>
                                                 <variation key="default">
@@ -589,8 +587,6 @@
                                                         <exclude reference="olE-Pr-gtd"/>
                                                     </mask>
                                                     <mask key="constraints">
-                                                        <exclude reference="gCT-7J-u0r"/>
-                                                        <exclude reference="sQC-6W-KZA"/>
                                                         <exclude reference="4tf-Id-QeR"/>
                                                         <exclude reference="yUy-AW-dA1"/>
                                                         <exclude reference="87Q-vg-zjy"/>
@@ -603,8 +599,6 @@
                                                         <include reference="olE-Pr-gtd"/>
                                                     </mask>
                                                     <mask key="constraints">
-                                                        <include reference="gCT-7J-u0r"/>
-                                                        <include reference="sQC-6W-KZA"/>
                                                         <include reference="4tf-Id-QeR"/>
                                                         <include reference="yUy-AW-dA1"/>
                                                         <include reference="87Q-vg-zjy"/>
@@ -654,9 +648,7 @@
                                     <constraint firstItem="doi-P1-JvD" firstAttribute="bottom" secondItem="ipf-Fl-nX1" secondAttribute="bottom" constant="-8" id="1PD-1z-gGS" userLabel="Page Control Y"/>
                                     <constraint firstItem="eUM-If-kk1" firstAttribute="bottom" secondItem="ipf-Fl-nX1" secondAttribute="bottom" id="4z4-tJ-tHH" userLabel="Scroll View Bottom"/>
                                     <constraint firstAttribute="height" constant="220" id="H9M-MP-OyA" userLabel="Interaction View Height"/>
-                                    <constraint firstItem="doi-P1-JvD" firstAttribute="centerX" secondItem="ipf-Fl-nX1" secondAttribute="centerX" constant="0.5" id="RVS-It-Geq" userLabel="Page Control X">
-                                        <variation key="widthClass=compact" constant="-0.5"/>
-                                    </constraint>
+                                    <constraint firstItem="doi-P1-JvD" firstAttribute="centerX" secondItem="ipf-Fl-nX1" secondAttribute="centerX" constant="0.5" id="RVS-It-Geq" userLabel="Page Control X"/>
                                     <constraint firstItem="w9i-Eh-QBc" firstAttribute="height" secondItem="ipf-Fl-nX1" secondAttribute="height" id="Vxy-p1-rbb" userLabel="Content View Height"/>
                                     <constraint firstItem="olE-Pr-gtd" firstAttribute="width" secondItem="ipf-Fl-nX1" secondAttribute="width" id="aC2-lq-KXy" userLabel="Description Input Width"/>
                                     <constraint firstItem="eUM-If-kk1" firstAttribute="leading" secondItem="ipf-Fl-nX1" secondAttribute="leading" id="f9X-QS-VnZ" userLabel="Scroll View Leading"/>
