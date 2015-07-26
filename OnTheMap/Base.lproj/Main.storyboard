@@ -214,44 +214,48 @@
                                     <outletCollection property="gestureRecognizers" destination="fHk-Q5-JsE" appends="YES" id="P97-nr-Aiw"/>
                                 </connections>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AZL-lr-di5">
-                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
-                                <attributedString key="attributedText">
-                                    <fragment content="Don't have an account? ">
-                                        <attributes>
-                                            <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                            <font key="NSFont" size="18" name="HelveticaNeue"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
-                                        </attributes>
-                                    </fragment>
-                                    <fragment content="Sign Up">
-                                        <attributes>
-                                            <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                            <font key="NSFont" size="18" name="HelveticaNeue-Bold"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
-                                        </attributes>
-                                    </fragment>
-                                </attributedString>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="K05-1V-LmH">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="Don't have an account? ">
+                                            <attributes>
+                                                <color key="NSColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <font key="NSFont" size="18" name="HelveticaNeue"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                            </attributes>
+                                        </fragment>
+                                        <fragment content="Sign Up">
+                                            <attributes>
+                                                <color key="NSColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <font key="NSFont" size="18" name="HelveticaNeue-Bold"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </state>
+                                <connections>
+                                    <action selector="signUpButtonClicked:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="plz-P4-oKV"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.98823529409999999" green="0.52549019610000003" blue="0.031372549020000001" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="an9-9A-GUa" firstAttribute="top" secondItem="Jz5-gp-Xoc" secondAttribute="bottom" constant="8" id="3Wp-Fj-vcu"/>
                             <constraint firstItem="an9-9A-GUa" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="6De-YE-qIo"/>
-                            <constraint firstItem="AZL-lr-di5" firstAttribute="top" secondItem="Ma7-vU-AfP" secondAttribute="bottom" constant="8" id="6PR-Og-sJK"/>
                             <constraint firstItem="S1u-bC-JfN" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="48" id="BDI-hN-kuq"/>
                             <constraint firstItem="Jz5-gp-Xoc" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="CpM-8B-hdZ"/>
                             <constraint firstAttribute="centerX" secondItem="S1u-bC-JfN" secondAttribute="centerX" id="HSL-hb-15X"/>
                             <constraint firstItem="Jz5-gp-Xoc" firstAttribute="top" secondItem="5YA-mj-8ex" secondAttribute="bottom" constant="8" id="J5G-9h-QaR"/>
                             <constraint firstAttribute="centerX" secondItem="5YA-mj-8ex" secondAttribute="centerX" id="bpe-hS-OyM"/>
+                            <constraint firstAttribute="centerX" secondItem="K05-1V-LmH" secondAttribute="centerX" id="byc-0f-drE"/>
                             <constraint firstItem="5YA-mj-8ex" firstAttribute="top" secondItem="S1u-bC-JfN" secondAttribute="bottom" constant="8" id="fYS-Nh-hzK"/>
                             <constraint firstItem="Ma7-vU-AfP" firstAttribute="top" secondItem="an9-9A-GUa" secondAttribute="bottom" constant="8" id="g7y-J0-OS3"/>
                             <constraint firstItem="Ma7-vU-AfP" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="gBW-AR-SVt"/>
                             <constraint firstItem="an9-9A-GUa" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="gCH-X7-MWs"/>
                             <constraint firstItem="Ma7-vU-AfP" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="mw4-zc-9zm"/>
                             <constraint firstItem="Jz5-gp-Xoc" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="vAa-tU-M2O"/>
-                            <constraint firstAttribute="centerX" secondItem="AZL-lr-di5" secondAttribute="centerX" id="z6S-Q7-DEg"/>
+                            <constraint firstItem="K05-1V-LmH" firstAttribute="top" secondItem="Ma7-vU-AfP" secondAttribute="bottom" constant="8" id="zcN-c9-fR7"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
@@ -260,7 +264,7 @@
                                 <exclude reference="Jz5-gp-Xoc"/>
                                 <exclude reference="an9-9A-GUa"/>
                                 <exclude reference="Ma7-vU-AfP"/>
-                                <exclude reference="AZL-lr-di5"/>
+                                <exclude reference="K05-1V-LmH"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="BDI-hN-kuq"/>
@@ -276,8 +280,8 @@
                                 <exclude reference="g7y-J0-OS3"/>
                                 <exclude reference="gBW-AR-SVt"/>
                                 <exclude reference="mw4-zc-9zm"/>
-                                <exclude reference="6PR-Og-sJK"/>
-                                <exclude reference="z6S-Q7-DEg"/>
+                                <exclude reference="byc-0f-drE"/>
+                                <exclude reference="zcN-c9-fR7"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -287,7 +291,7 @@
                                 <include reference="Jz5-gp-Xoc"/>
                                 <include reference="an9-9A-GUa"/>
                                 <include reference="Ma7-vU-AfP"/>
-                                <include reference="AZL-lr-di5"/>
+                                <include reference="K05-1V-LmH"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="BDI-hN-kuq"/>
@@ -303,8 +307,8 @@
                                 <include reference="g7y-J0-OS3"/>
                                 <include reference="gBW-AR-SVt"/>
                                 <include reference="mw4-zc-9zm"/>
-                                <include reference="6PR-Og-sJK"/>
-                                <include reference="z6S-Q7-DEg"/>
+                                <include reference="byc-0f-drE"/>
+                                <include reference="zcN-c9-fR7"/>
                             </mask>
                         </variation>
                     </view>
@@ -316,7 +320,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="fHk-Q5-JsE">
+                <tapGestureRecognizer id="fHk-Q5-JsE" userLabel="Login Tap Gesture Recognizer">
                     <connections>
                         <action selector="loginButtonClicked:" destination="vXZ-lx-hvc" id="xyL-N2-NBq"/>
                     </connections>

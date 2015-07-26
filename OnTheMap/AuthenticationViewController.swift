@@ -50,6 +50,12 @@ class AuthenticationViewController: UIViewController {
         }
     }
 
+    @IBAction func signUpButtonClicked(sender: AnyObject) {
+        if let url = NSURL(string: "https://www.udacity.com/account/auth#!/signup") {
+            UIApplication.sharedApplication().openURL(url)
+        }
+    }
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
