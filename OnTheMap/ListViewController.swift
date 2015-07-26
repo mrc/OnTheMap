@@ -32,8 +32,8 @@ class ListViewController: StudentLocationsViewController, UITableViewDelegate, U
             cell.textLabel!.text = "anonymous"
         }
 
-        if let mapString = studentLocation.mapString {
-            cell.detailTextLabel!.text = mapString
+        if let mediaURL = studentLocation.mediaURL {
+            cell.detailTextLabel!.text = mediaURL
         } else {
             cell.detailTextLabel!.text = ""
         }
@@ -43,6 +43,16 @@ class ListViewController: StudentLocationsViewController, UITableViewDelegate, U
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return studentLocations.count
+    }
+
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+
+        let studentLocation = studentLocations[indexPath.item]
+        if let urlString = studentLocation.mediaURL,
+            url = NSURL(string: urlString)
+            where UIApplication.sharedApplication().canOpenURL(url) {
+                UIApplication.sharedApplication().openURL(url)
+        }
     }
 
 }
