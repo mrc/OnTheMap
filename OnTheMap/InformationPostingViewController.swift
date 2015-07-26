@@ -47,10 +47,15 @@ class InformationPostingViewController: UIViewController, UITextFieldDelegate {
 
             // save the text field for the presenting view controller
             let urlField = alert.textFields![0] as! UITextField
-            self.url = urlField.text
 
-            // dismiss the information posting view controller
-            self.performSegueWithIdentifier("submitLocationSegue", sender: self)
+            if let url = NSURL(string: urlField.text)
+                where UIApplication.sharedApplication().canOpenURL(url) {
+                    self.url = urlField.text
+                    self.performSegueWithIdentifier("submitLocationSegue", sender: self)
+            } else {
+                self.showErrorMessage("Unable to verify that's a valid URL.")
+
+            }
         }
 
         urlAction.enabled = false // will be enabled when the user types something into the field
@@ -68,7 +73,6 @@ class InformationPostingViewController: UIViewController, UITextFieldDelegate {
         alert.addAction(cancelAction)
 
         self.presentViewController(alert, animated: true, completion: nil)
-
     }
 
     func showErrorMessage(message: String) {
