@@ -93,10 +93,11 @@ class StudentLocationsViewController: UIViewController {
             .getStudentLocations()
             .uponQueue(dispatch_get_main_queue()) {
 
+                self.isUpdating = false
+
                 switch $0 {
                 case let .Success(locations):
                     self.loadedLocations(locations.value)
-                    self.isUpdating = false
 
                 case let .Failure(error):
                     self.showErrorMessage(error.description)
