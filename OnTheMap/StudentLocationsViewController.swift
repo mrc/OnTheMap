@@ -17,7 +17,7 @@ class StudentLocationsViewController: UIViewController {
 
     var isUpdating = false
 
-    func loadedLocations(locations: [StudentLocation]) {
+    func loadedLocations(locations: [StudentInformation]) {
     }
 
     override func viewDidLoad() {

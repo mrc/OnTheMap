@@ -11,9 +11,9 @@ import UIKit
 class ListViewController: StudentLocationsViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
-    var studentLocations = [StudentLocation]()
+    var studentLocations = [StudentInformation]()
 
-    override func loadedLocations(locations: [StudentLocation]) {
+    override func loadedLocations(locations: [StudentInformation]) {
         super.loadedLocations(locations)
         studentLocations = locations
         tableView.reloadData()

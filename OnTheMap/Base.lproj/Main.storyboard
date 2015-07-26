@@ -764,7 +764,7 @@
                                             <action selector="submitLocationClicked:" destination="eHR-8f-s6c" eventType="touchUpInside" id="24E-zO-fWL"/>
                                         </connections>
                                     </button>
-                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="oed-ZZ-NsX" userLabel="Activity Indicator">
+                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="oed-ZZ-NsX" userLabel="Activity Indicator">
                                         <rect key="frame" x="-10" y="-10" width="20" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="37" id="53x-w9-Ber"/>

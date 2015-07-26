@@ -1,5 +1,5 @@
 //
-//  StudentLocation.swift
+//  StudentInformation.swift
 //  OnTheMap
 //
 //  Created by Matt Curtis on 16/05/2015.
@@ -9,7 +9,7 @@
 import Foundation
 import MapKit
 
-class StudentLocation {
+class StudentInformation {
 
     let firstName: String?
     let lastName: String?

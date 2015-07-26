@@ -13,7 +13,7 @@ class MapViewController: StudentLocationsViewController {
 
     @IBOutlet weak var mapView: MKMapView!
 
-    override func loadedLocations(locations: [StudentLocation]) {
+    override func loadedLocations(locations: [StudentInformation]) {
         super.loadedLocations(locations)
 
         // clear existing annotations
