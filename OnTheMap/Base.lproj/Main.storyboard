@@ -487,22 +487,48 @@
                                             <action selector="submitLocationClicked:" destination="eHR-8f-s6c" eventType="touchUpInside" id="24E-zO-fWL"/>
                                         </connections>
                                     </button>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="oed-ZZ-NsX" userLabel="Activity Indicator">
+                                        <rect key="frame" x="-10" y="-10" width="20" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="37" id="53x-w9-Ber"/>
+                                            <constraint firstAttribute="height" constant="37" id="T4g-Vo-xrR"/>
+                                        </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="53x-w9-Ber"/>
+                                                <exclude reference="T4g-Vo-xrR"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="widthClass=compact">
+                                            <mask key="constraints">
+                                                <include reference="53x-w9-Ber"/>
+                                                <include reference="T4g-Vo-xrR"/>
+                                            </mask>
+                                        </variation>
+                                    </activityIndicatorView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.2901960784" green="0.43921568630000002" blue="0.5450980392" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="centerX" secondItem="tux-YH-xAM" secondAttribute="centerX" id="5YI-ZO-lWp"/>
+                                    <constraint firstItem="oed-ZZ-NsX" firstAttribute="top" secondItem="cUv-MD-Hgu" secondAttribute="top" constant="8" id="7gm-nj-dKA"/>
                                     <constraint firstAttribute="bottom" secondItem="tux-YH-xAM" secondAttribute="bottom" constant="8" id="EAk-XJ-Ggv"/>
+                                    <constraint firstAttribute="centerX" secondItem="oed-ZZ-NsX" secondAttribute="centerX" id="FhD-pm-Tr8"/>
                                     <constraint firstAttribute="height" constant="220" id="Yqv-hn-DZL" userLabel="Location Input Height"/>
+                                    <constraint firstAttribute="centerX" secondItem="oed-ZZ-NsX" secondAttribute="centerX" id="vV7-nS-Efy"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="subviews">
                                         <exclude reference="YNf-5i-ZUA"/>
                                         <exclude reference="epQ-yE-rP0"/>
                                         <exclude reference="tux-YH-xAM"/>
+                                        <exclude reference="oed-ZZ-NsX"/>
                                     </mask>
                                     <mask key="constraints">
                                         <exclude reference="Yqv-hn-DZL"/>
+                                        <exclude reference="7gm-nj-dKA"/>
+                                        <exclude reference="FhD-pm-Tr8"/>
+                                        <exclude reference="vV7-nS-Efy"/>
                                         <exclude reference="5YI-ZO-lWp"/>
                                         <exclude reference="EAk-XJ-Ggv"/>
                                     </mask>
@@ -512,9 +538,13 @@
                                         <include reference="YNf-5i-ZUA"/>
                                         <include reference="epQ-yE-rP0"/>
                                         <include reference="tux-YH-xAM"/>
+                                        <include reference="oed-ZZ-NsX"/>
                                     </mask>
                                     <mask key="constraints">
                                         <include reference="Yqv-hn-DZL"/>
+                                        <include reference="7gm-nj-dKA"/>
+                                        <include reference="FhD-pm-Tr8"/>
+                                        <include reference="vV7-nS-Efy"/>
                                         <include reference="5YI-ZO-lWp"/>
                                         <include reference="EAk-XJ-Ggv"/>
                                     </mask>
@@ -607,6 +637,7 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="oed-ZZ-NsX" id="VVJ-eP-W8d"/>
                         <outlet property="findOnTheMapButton" destination="epQ-yE-rP0" id="ds9-VC-aXS"/>
                         <outlet property="locationInputTopConstraint" destination="Xlh-kG-h6F" id="5KC-A4-r6c"/>
                         <outlet property="locationTextField" destination="YNf-5i-ZUA" id="wvg-jR-fWh"/>

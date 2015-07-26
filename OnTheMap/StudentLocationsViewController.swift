@@ -64,9 +64,15 @@ class StudentLocationsViewController: UIViewController {
     }
 
     func showErrorMessage(message: String) {
-        var errorAlert = UIAlertController(title: "Error", message: message, preferredStyle: UIAlertControllerStyle.Alert)
-        errorAlert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: nil))
-        presentViewController(errorAlert, animated: true, completion: nil)
+        var alert = UIAlertController(title: "Error", message: message, preferredStyle: .Alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: nil))
+        presentViewController(alert, animated: true, completion: nil)
+    }
+
+    func showSuccessMessage(message: String, withTitle title: String) {
+        var alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: nil))
+        presentViewController(alert, animated: true, completion: nil)
     }
 
     func populateStudentLocations() {
@@ -98,13 +104,31 @@ class StudentLocationsViewController: UIViewController {
         }
     }
 
-
     @IBAction func submitLocation(segue: UIStoryboardSegue) {
         if let
+            appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate,
+            firstName = appDelegate.studentFirstName,
+            lastName = appDelegate.studentLastName,
+            parseKey = appDelegate.udacityUserID,
+
             vc = segue.sourceViewController as? InformationPostingViewController,
-            location = vc.selectedUserLocation,
+            coordinates = vc.selectedLocationCoordinates,
+            locationName = vc.selectedLocationName,
             url = vc.url {
-                println("found location \(location), url \(url)")
+
+                let parseClient = ParseClient()
+                parseClient
+                .postLocationFor(parseKey, firstName: firstName, lastName: lastName, url: url, andLocation: coordinates, named: locationName)
+                    .uponQueue(dispatch_get_main_queue()) {
+
+                        switch $0 {
+                        case let .Success(_):
+                            self.showSuccessMessage("Location submitted", withTitle: "Thank you!")
+
+                        case let .Failure(error):
+                            self.showErrorMessage(error.description)
+                        }
+                }
         }
     }
 

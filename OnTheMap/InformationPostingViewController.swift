@@ -19,10 +19,14 @@ class InformationPostingViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var findOnTheMapButton: UIButton!
     @IBOutlet weak var submitButton: UIButton!
-    var selectedUserLocation: CLLocationCoordinate2D?
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    var selectedLocationCoordinates: CLLocationCoordinate2D?
+    var selectedLocationName: String?
     var url: String?
 
     @IBAction func findOnTheMapClicked(sender: AnyObject) {
+        activityIndicator.startAnimating()
+
         UIView.animateWithDuration(0.2, delay: 0.0, options: .CurveEaseOut,
             animations: {
                 self.whereAreYouStudyingView.alpha = 0
@@ -75,7 +79,8 @@ class InformationPostingViewController: UIViewController, UITextFieldDelegate {
 
     func showOnTheMap(item: MKMapItem) {
         if let region = item.placemark.region as? CLCircularRegion {
-            self.selectedUserLocation = region.center
+            self.selectedLocationCoordinates = region.center
+            self.selectedLocationName = item.placemark.name
 
             let region = MKCoordinateRegionMakeWithDistance(region.center, region.radius, region.radius)
             mapView.setRegion(region, animated: true)
@@ -106,6 +111,8 @@ class InformationPostingViewController: UIViewController, UITextFieldDelegate {
 
         foundLocations
             .uponQueue(dispatch_get_main_queue()) {
+                self.activityIndicator.stopAnimating()
+
                 switch $0 {
                 case .Success(let mapItem):
                     self.showOnTheMap(mapItem.value)

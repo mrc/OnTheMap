@@ -48,6 +48,16 @@ class RESTClient {
     }
 
     /**
+        POST some JSON data to a URL, and return the deferred
+        result, either the JSON retrieved from the URL,
+        or the error that occurred while POSTing.
+    */
+    func postWithJSONResultTo(method: String, withBody: JSON, andHeaders: [String: String]) -> Deferred<Result<JSON>> {
+        return postTo(method, withBody: withBody, andHeaders: andHeaders)
+            .map { $0.bind(NSData.toJSON) }
+    }
+
+    /**
         GET from a URL, and return the deferred result, either
         the NSData retrieved from the URL, or the error that
         occurred while GETting.
@@ -72,6 +82,16 @@ class RESTClient {
         }
         task.resume()
         return d
+    }
+
+    /**
+        GET from a URL, and return the deferred result, either
+        the JSON retrieved from the URL, or the error that
+        occurred while GETting.
+    */
+    func getJSONFrom(method: String, withHeaders: [String: String]) -> Deferred<Result<JSON>> {
+        return getFrom(method, withHeaders: withHeaders)
+            .map { $0.bind(NSData.toJSON) }
     }
 
 }
