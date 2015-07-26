@@ -135,6 +135,8 @@ class StudentLocationsViewController: UIViewController {
     }
 
     @IBAction func logoutClicked(sender: AnyObject) {
+        let udacityClient = UdacityClient()
+        udacityClient.logOut()
         dismissViewControllerAnimated(true, completion: nil)
     }
 
