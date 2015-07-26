@@ -108,10 +108,7 @@ class StudentLocationsViewController: UIViewController {
     @IBAction func submitLocation(segue: UIStoryboardSegue) {
         if let
             appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate,
-            firstName = appDelegate.studentFirstName,
-            lastName = appDelegate.studentLastName,
-            parseKey = appDelegate.udacityUserID,
-
+            userInfo = appDelegate.udacityUserInformation,
             vc = segue.sourceViewController as? InformationPostingViewController,
             coordinates = vc.selectedLocationCoordinates,
             locationName = vc.selectedLocationName,
@@ -119,7 +116,7 @@ class StudentLocationsViewController: UIViewController {
 
                 let parseClient = ParseClient()
                 parseClient
-                .postLocationFor(parseKey, firstName: firstName, lastName: lastName, url: url, andLocation: coordinates, named: locationName)
+                    .postLocationFor(userInfo.userId, firstName: userInfo.firstName, lastName: userInfo.lastName, url: url, andLocation: coordinates, named: locationName)
                     .uponQueue(dispatch_get_main_queue()) {
 
                         switch $0 {
@@ -135,6 +132,10 @@ class StudentLocationsViewController: UIViewController {
 
     @IBAction func cancelLocationSubmit(segue: UIStoryboardSegue) {
 
+    }
+
+    @IBAction func logoutClicked(sender: AnyObject) {
+        dismissViewControllerAnimated(true, completion: nil)
     }
 
 

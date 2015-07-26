@@ -12,6 +12,12 @@ import Result
 
 class UdacityClient: RESTClient {
 
+    struct UserInformation {
+        var userId: String
+        var firstName: String
+        var lastName: String
+    }
+
     /**
         Log in to Udacity and retrieve the user ID
         (deferred, might be an error result.)
@@ -69,5 +75,30 @@ class UdacityClient: RESTClient {
             getFrom("https://www.udacity.com/api/users/\(userId)", withHeaders: headers)
                 .map { $0.map(UdacityClient.dropSecurityHeader) }
                 .map { $0.bind(NSData.toJSON) }
+    }
+
+    /**
+        Retrieve the user information from Udacity (deferred,
+        might be an error result.)
+    */
+    func getUserInformation(userId: String) -> Deferred<Result<UserInformation>> {
+
+        // helper to extract the user info from the JSON (if it exists)
+        func infoFromResponse(response: JSON) -> Result<UserInformation> {
+            if let
+                key = response["user"]?["key"] as? String,
+                firstName = response["user"]?["first_name"] as? String,
+                lastName = response["user"]?["last_name"] as? String {
+
+                let info = UserInformation(userId: key, firstName: firstName, lastName: lastName)
+                return Result(success: info)
+            } else {
+                return Result(failure: "Unable to find user info.")
+            }
+        }
+
+        return
+            getUserData(userId)
+                .map { $0.bind(infoFromResponse) }
     }
 }

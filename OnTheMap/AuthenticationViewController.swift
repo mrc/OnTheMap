@@ -7,27 +7,46 @@
 //
 
 import UIKit
+import Deferred
+import Result
 
 class AuthenticationViewController: UIViewController {
 
-    @IBOutlet weak var debugLabel: UILabel!
+    @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var loginActivityIndicator: UIActivityIndicatorView!
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    func showErrorMessage(message: String) {
+        var alert = UIAlertController(title: "Error", message: message, preferredStyle: .Alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: nil))
+        presentViewController(alert, animated: true, completion: nil)
+    }
 
-        let parseClient = ParseClient()
-        let sloc = parseClient.getStudentLocations()
-        sloc.uponQueue(dispatch_get_main_queue()) {
-            println("sloc: \($0)")
-        }
-
+    @IBAction func loginButtonClicked(sender: AnyObject) {
         let udacityClient = UdacityClient()
-        let username = "USERNAME"
-        let password = "PASSWORD"
-        udacityClient.getUserId(username, password: password)
+        let username = emailTextField.text
+        let password = passwordTextField.text
+
+        loginActivityIndicator.startAnimating()
+
+        udacityClient
+            .getUserId(username, password: password)
+            .bind { $0.toDeferred { udacityClient.getUserInformation($0) } }
             .uponQueue(dispatch_get_main_queue()) {
-                self.debugLabel.text = "userid: \($0)"
-                println("userid: \($0)")
+
+                self.loginActivityIndicator.stopAnimating()
+
+                switch $0 {
+                case let .Success(userInfo):
+
+                    let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+                    appDelegate.udacityUserInformation = userInfo.value
+
+                    self.performSegueWithIdentifier("segueAfterLogin", sender: self)
+
+                case let .Failure(error):
+                    self.showErrorMessage(error.description)
+                }
         }
     }
 

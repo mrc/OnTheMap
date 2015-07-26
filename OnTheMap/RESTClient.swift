@@ -38,7 +38,7 @@ class RESTClient {
 
         let task = urlSession.dataTaskWithRequest(request) { data, response, error in
             if error != nil {
-                d.fill(Result(failure: error.description))
+                d.fill(Result(failure: error.localizedDescription))
             } else {
                 d.fill(Result(success: data))
             }
@@ -75,7 +75,7 @@ class RESTClient {
 
         let task = urlSession.dataTaskWithRequest(request) { data, response, error in
             if error != nil {
-                d.fill(Result(failure: error.description))
+                d.fill(Result(failure: error.localizedDescription))
             } else {
                 d.fill(Result(success: data))
             }
