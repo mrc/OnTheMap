@@ -1,2 +1,2 @@
-github "bignerdranch/Deferred"
+github "bignerdranch/Deferred" "master"
 github "bignerdranch/Result"
