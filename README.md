@@ -50,6 +50,10 @@ functions such as `Result.toDeferred` (in
 
 BUILDING
 --------
+Before building the project please retrieve dependencies with carthage:
+
+    carthage update
+
 This project uses some 3rd party projects to help manage asynchrony:
 
 - [Deferred](https://github.com/bignerdranch/Deferred) as a composable
